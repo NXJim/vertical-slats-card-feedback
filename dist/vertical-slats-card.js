@@ -826,8 +826,8 @@ class VerticalSlatsCard extends LitElement {
                 --shine-color:${colors.shineColor};
                 --slat-base-opacity:${colors.baseOpacity};
                 --slat-shine-opacity:${colors.shineOpacity};
-                --slat-gap:${Number(this.config.slat_gap) || 6}px;
-                --slat-radius:${Number(this.config.slat_radius) ?? 10}px;
+                --slat-gap:${Number.isFinite(Number(this.config.slat_gap)) ? Number(this.config.slat_gap) : 6}px;
+                --slat-radius:${Number.isFinite(Number(this.config.slat_radius)) ? Number(this.config.slat_radius) : 10}px;
               "
             >
               ${slats.map((i) => {
@@ -994,6 +994,7 @@ class VerticalSlatsCard extends LitElement {
         z-index: 1;
         display: grid;
         grid-auto-flow: column;
+        grid-auto-columns: 1fr;
         gap: var(--slat-gap, 6px);
         height: 92px;
       }
